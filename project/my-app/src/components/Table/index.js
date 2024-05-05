@@ -1,25 +1,15 @@
-import {useEffect} from 'react'
-
-import './index.css'
-
-const TruncatedTableCell = props => {
-  const {text, maxLength, image} = props
-
-  useEffect(() => {
-    console.log(text)
-  }, [text])
-
-  const truncatedText =
-    text.length > maxLength ? `${text.slice(0, maxLength)}...` : text
-  const isImage = image === 'true'
-
-  const content = isImage ? (
-    <img src={text} alt="img" className="logo" />
-  ) : (
-    <td>{truncatedText}</td>
-  )
-
-  return <>{content}</>
-}
-
-export default TruncatedTableCell
+const TruncatedTableCell = (props) => {
+    const { text, maxLength } = props;
+    let truncatedText =
+      text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
+      if (text===false){
+        truncatedText = 0;
+      }else if(text===true){
+        truncatedText = 1;
+      }
+  
+    return <td>{truncatedText}</td>;
+  };
+  
+  export default TruncatedTableCell;
+  
